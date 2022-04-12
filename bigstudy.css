@@ -23,6 +23,25 @@ main {
 }
 
 table {
-    background-color: blue;
-    color: white;
+    background-color: lightgray;
+    color: black;
+    margin: 30px auto 10px auto;
+    min-width: 40%;
+}
+
+th {
+    border: thin black solid;
+    padding: 10px;
+    background-color: violet;
+}
+
+#questDiv {
+    border: thin solid lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px;
+    padding: 20px;
+}
+
+td {
+    padding: 10px;
 }

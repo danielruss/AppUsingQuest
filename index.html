@@ -2,6 +2,8 @@
   <head>
     <title>Big Study</title>
     <link rel="stylesheet" href="bigstudy.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous”>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.3/math.js"
@@ -11,19 +13,33 @@
     ></script>
   </head>
   <body>
-    <header>The Big Study</header>
+    <header>SEPARATE</header>
     <main>
-      <header>Hi Participant</header>
-      <br />
       <p>
         This is a toy example using the Quest library in a client-side application. It is not a complete PWA and has no backend
         database where it saves the results.
       </p>
-      <p>The Big Study welcomes you to enroll. Before you do, please answer the following questions.</p>
+      <p>Our very big study, SEPARATE, welcomes you to enroll. Before you do, please answer the following questions.</p>
 
       <div id="questDiv"></div>
-      <div id="resultsDiv"><table id="respTable"></table></div>
+      <div id="resultsDiv">
+        <table>
+          <thead>
+            <tr>
+              <td colspan="2">peeking at the responses:</td>
+            </tr>
+            <tr>
+              <th>Question</th>
+              <th>Response</th>
+            </tr>
+          </thead>
+          <tbody id="respTableBody"></tbody>
+        </table>
+      </div>
     </main>
+    <footer>
+      <input type="button" id="clearResp" value="clearResponses" />
+    </footer>
   </body>
   <script type="module" src="./bigstudy.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
