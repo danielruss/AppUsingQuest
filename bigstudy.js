@@ -10,16 +10,28 @@ document.getElementById("clearResp").addEventListener("click", () => {
 // I'm using this FakeDB object as a mock object for the 
 // database.
 let FakeDB = {}
+// integrate with epidonate if a token is given...
 
-// storeResponse take the object from quest and 
-// adds all the elements to the 
-function storeResponse(obj) {
-    console.log("store response ", obj)
+const params = new URLSearchParams(location.search)
+
+
+function storeToFakeDB(obj){
+    console.log("storint response to fakeDB", obj)
     for (const prop in obj) {
         console.log(`setting db[${prop}]=${obj[prop]} `)
         FakeDB[prop] = obj[prop];
     }
     getResponse()
+}
+
+
+// storeResponse take the object from quest and 
+// adds all the elements to the 
+function storeResponse(obj) {
+    storeToFakeDB(obj)
+    if (params.has("token")){
+        storeResponseToEpidonate(obj)
+    }
 }
 
 function getResponse() {
@@ -37,11 +49,25 @@ function getResponse() {
     }
 
     document.getElementById("respTableBody").innerText = ""
-    for (const prop in FakeDB) {
+    let respObj = params.has("token")?getResponseFromEpidonate():FakeDB;
+    for (const prop in respObj) {
         makeTableRow(tableElement, prop, FakeDB[prop])
     }
 
-    return FakeDB
+    return respObj;
+}
+
+function storeResponseToEpidonate(obj){
+    let token = params.get("token")
+    console.log(` ===> Storing to Epidonate token=${token}`)    
+}
+function getResponseFromEpidonate(obj){
+    let token = params.get("token")
+    console.log(` ===> Get data from Epidonate token=${token}`)
+
+    // currently return the fake db (i.e. we are not using epidonate.. get
+    // the data from epidonat and return the object.)
+    return FakeDB;
 }
 
 /*
