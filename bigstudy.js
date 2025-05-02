@@ -47,10 +47,17 @@ const params = new URLSearchParams(location.search)
 async function storeToFakeDB(obj){
     let storedObj = (await FakeDB.getItem(module_name))
     Object.entries(obj).forEach( ([key,value]) => {
+
         key=key.replace(`${module_name}.`,"")
         key.split('.').reduce( (acc,cv,indx,arr) => {
             if (indx==arr.length-1){
-                acc[cv]=value
+                if (typeof value === undefined) {
+                    if (Object.keys(acc).includes(cv)){
+                        delete acc[cv]
+                    }
+                } else{
+                    acc[cv]=value
+                }
             } else if ( !Object.keys(acc).includes(cv) ){
                 acc[cv]={}
             }
