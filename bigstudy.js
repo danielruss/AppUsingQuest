@@ -51,7 +51,7 @@ async function storeToFakeDB(obj){
         key=key.replace(`${module_name}.`,"")
         key.split('.').reduce( (acc,cv,indx,arr) => {
             if (indx==arr.length-1){
-                if (typeof value === undefined) {
+                if (typeof value === 'undefined') {
                     if (Object.keys(acc).includes(cv)){
                         delete acc[cv]
                     }
