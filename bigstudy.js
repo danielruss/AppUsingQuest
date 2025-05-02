@@ -1,4 +1,4 @@
-import { transform } from 'https://episphere.github.io/quest/replace2.js';
+import { transform } from 'https://danielruss.github.io/quest/replace2.js';
 import * as epiDonate from 'https://episphere.github.io/donate/syncDonate.mjs';
 import localforage from 'https://cdn.skypack.dev/localforage'
 
